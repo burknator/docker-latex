@@ -1,0 +1,21 @@
+;; $Id: latex-loc-fmts.xdy,v 1.1 2004/05/24 21:53:27 jschrod Exp $
+;;------------------------------------------------------------
+
+;;;
+;;; XXX
+;;;
+
+(define-attributes ("default" "textbf" "textit" "hyperpage"))
+
+(markup-locref :open "\textbf{" :close "}" :attr "textbf")
+(markup-locref :open "\textit{" :close "}" :attr "textit")
+(markup-locref :open "\hyperpage{" :close "}" :attr "hyperpage")
+
+
+
+;;======================================================================
+;;
+;; $Log: latex-loc-fmts.xdy,v $
+;; Revision 1.1  2004/05/24 21:53:27  jschrod
+;;     Standard modules, introduced in "LaTeX Companion Release".
+;;

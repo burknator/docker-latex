@@ -1,0 +1,68 @@
+;; $Id: latex.xdy,v 1.2 2005/05/09 20:21:11 jschrod Exp $
+;;------------------------------------------------------------
+
+;;;
+;;; LaTeX conventions
+;;;
+;;; both in raw index entries and output markup
+;;;
+
+
+;; We need to define merge rules for known macros first, as tex.xdy
+;; has a merge-rule that will discard all macros.
+
+(merge-rule "\\LaTeXe *" "LaTeX2e" :eregexp :again)
+(merge-rule "\\BibTeX *" "BibTeX" :eregexp :again)
+(merge-rule "\\AmSTeX *" "AmSTeX" :eregexp :again)
+(merge-rule "\\AmSLaTeX *" "AmSLaTeX" :eregexp :again)
+(merge-rule "\\XeT *" "XeT" :eregexp :again)
+
+
+;; LaTeX has the same conventions as TeX
+
+(require "tex.xdy")
+
+
+;; We do not define attributes, this is done in latex-loc-fmts.
+
+
+;; Standard location classes: arabic and roman numbers, and alphabets.
+
+(define-location-class "arabic-page-numbers" ("arabic-numbers"))
+(define-location-class "roman-page-numbers"  ("roman-numbers-lowercase"))
+(define-location-class "Roman-page-numbers"  ("roman-numbers-uppercase"))
+(define-location-class "alpha-page-numbers"  ("alpha"))
+(define-location-class "Alpha-page-numbers"  ("ALPHA"))
+
+
+;;;
+;;; Output Markup
+;;;
+
+(markup-index :open  "\begin{theindex}~n"
+	      :close "~n~n\end{theindex}~n"
+	      :tree)
+
+(markup-letter-group-list :sep "~n~n  \indexspace~n")
+(markup-letter-group :open-head "~n  % ")
+
+(markup-indexentry :open "~n  \item "           :depth 0)
+(markup-indexentry :open "~n    \subitem "      :depth 1)
+(markup-indexentry :open "~n      \subsubitem " :depth 2)
+
+(markup-locclass-list :open ", " :sep ", ")
+(markup-locref-list   :sep ", ")
+
+
+
+
+;;======================================================================
+;;
+;; $Log: latex.xdy,v $
+;; Revision 1.2  2005/05/09 20:21:11  jschrod
+;;     Support handling of some common macros for logos; ignore all other
+;; TeX commands.
+;;
+;; Revision 1.1  2004/05/24 21:53:27  jschrod
+;;     Standard modules, introduced in "LaTeX Companion Release".
+;;

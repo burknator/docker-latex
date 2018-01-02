@@ -1,0 +1,16 @@
+;; $Id: latin-lettergroups.xdy,v 1.1 2004/05/24 21:53:27 jschrod Exp $
+;;------------------------------------------------------------
+
+;;;
+;;; latin lettergroups
+;;;
+
+(markup-letter-group :open-head "~n  \textbf{" :close-head "}")
+
+
+;;======================================================================
+;;
+;; $Log: latin-lettergroups.xdy,v $
+;; Revision 1.1  2004/05/24 21:53:27  jschrod
+;;     Standard modules, introduced in "LaTeX Companion Release".
+;;
